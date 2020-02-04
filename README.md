@@ -1,5 +1,5 @@
 Setting up 2.5 hours . Part of this was just me setting some of the things up on my Mac book. 
-Actual coding was around 7.5 hours, most of the hours on the 3rd and a couple hours here and there today. 
+Actual coding was around 7.5 hours, most of the hours on the 3rd and a couple hours all up on the 4th. 
 
 I have not used Angular to this extent previously so most of my time was still spent on understanding those concepts. I only had a rough idea when I started. 
 
