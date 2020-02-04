@@ -1,0 +1,73 @@
+<h1 id="tableLabel">Search</h1>
+
+<!--
+<p *ngIf="!forecasts"><em>Loading...</em></p>
+-->
+
+<p *ngIf="noSearchTextMessage">
+    Please enter a search text to continue
+</p>
+
+
+<input class="search" type="search" placeholder="Search by title or author" [(ngModel)]='text'>
+<button class="searchButton" (click)="searchBooks(text)">Search</button>
+
+
+<div class="wrapper" *ngIf="bookArray">
+    <div class="item" *ngFor="let s of bookArray.items" (click)="openDetails(s)">
+
+        <div *ngIf="s.volumeInfo.imageLinks">
+            <img class="img-responsive img-rounded" src="{{s.volumeInfo.imageLinks.smallThumbnail}}" alt="pic-test">
+        </div>
+        <!-- show some other empty local image -->
+
+        <p>{{s.volumeInfo.title}}</p>
+        <p>
+            <span *ngFor="let auth of s.volumeInfo.authors">
+                {{auth}},
+            </span>
+            <span> - {{s.volumeInfo.publishedDate}}</span>
+        </p>
+    </div>
+</div>
+
+
+<!-- The Modal - SEND THE BOOK INFORMATION THROUGH -->
+<!-- THIS WILL HAVE THE DESC AND THE MODE OF DELIVERY ALSO -->
+<!-- NEEDS TO GO TO THE SERVER TO CALCULATE THE VALUE AND SEND IT BACK TO THE USER WHEN SELECTING ON BUY -->
+<div id="myModal" class="modal">
+
+
+    <!-- Modal content -->
+    <div class="modalContent">
+
+        <p class="modalClose" (click)="closeDetailModal()">&times;</p>
+
+        <div *ngIf="selectedBook">
+            <div *ngIf="selectedBook.volumeInfo.imageLinks">
+                <img class="img-responsive img-rounded" src="{{selectedBook.volumeInfo.imageLinks.smallThumbnail}}" alt="pic-test">
+                <p>{{selectedBook.volumeInfo.description}}</p>
+            </div>
+            <!-- show some other empty local image -->
+
+            <p>{{selectedBook.volumeInfo.title}}</p>
+            <p>
+                <span *ngFor="let auth of selectedBook.volumeInfo.authors">
+                    {{auth}},
+                </span>
+                <span> - {{selectedBook.volumeInfo.publishedDate}}</span>
+            </p>
+        </div>
+
+
+        <div>
+            <p>Delivery Type</p>
+            <!-- option box to select this -->>
+        </div>
+
+        <!-- THE BUY BUTTON ONLY NEEDS TO SEND BACK THE ID WITH THE DELIVERY COST TO THE SERVER -->
+        <!-- THIS IN TURN WILL SHOW THE DELIVERY DETAILS TO THE USER -->
+
+    </div>
+
+</div>
